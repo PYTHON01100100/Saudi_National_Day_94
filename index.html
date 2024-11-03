@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saudi National Day Survey</title>
+    <style>
+      
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="email"], input[type="number"], select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        .buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <img src="NationalDay94.jpg" alt="National Day Celebration">
+        <h2>National Day Celebration Survey</h2>
+        <p>Below is a survey on the Saudi National Day celebration. Please take a few moments to complete this questionnaire.</p>
+
+      
+        <form id="surveyForm">
+         
+            <label for="name">Your name:</label>
+            <input type="text" id="name" name="name" required>
+
+          
+            <label for="email">Email address:</label>
+            <input type="email" id="email" name="email" required>
+
+           
+            <label>Your gender:</label>
+            <input type="radio" id="male" name="gender" value="Male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="Female">
+            <label for="female">Female</label>
+
+   
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="1" required>
+
+            <label for="region">Which region in the kingdom are you from:</label>
+            <select name="region" id="region">
+                <option selected="selected">- Select -</option>
+                <option value="RYD">Al-Riyadh</option>
+                <option value="MKM">Makkah al-Mukarramah</option>
+                <option value="MDM">Al-Madinah al-Munawwarah</option>
+                <option value="QSM">Al-Qasim</option>
+                <option value="SHQ">Ash-Sharqiyah</option>
+                <option value="ASI">Asir</option>
+                <option value="TBK">Tabouk</option>
+                <option value="HAL">Ha'il</option>
+                <option value="HDS">Al-Hudud ash-Shamaliyah</option>
+                <option value="JIZ">Jizan</option>
+                <option value="NJR">Najran</option>
+                <option value="BAH">Al-Bahah</option>
+                <option value="JWF">Al-Jawf</option>
+            </select>
+
+     
+            <label>Which of the following would you consider to celebrate the national day:</label>
+            <input type="checkbox" id="gathering" name="celebration" value="Family Gathering">
+            <label for="gathering">Family Gathering</label><br>
+            <input type="checkbox" id="fireworks" name="celebration" value="Fireworks Show">
+            <label for="fireworks">Fireworks Show</label><br>
+            <input type="checkbox" id="sports" name="celebration" value="Sport Events">
+            <label for="sports">Sport Events</label><br>
+            <input type="checkbox" id="nationalColors" name="celebration" value="Dress In National Colors">
+            <label for="nationalColors">Dress In National Colors</label><br>
+            <input type="checkbox" id="parade" name="celebration" value="Festival Parade">
+            <label for="parade">Festival Parade</label><br>
+            <input type="checkbox" id="others" name="celebration" value="Others">
+            <label for="others">Others</label>
+
+          
+            <label>Would you be interested to participate in organizing events for the national day celebration:</label>
+            <input type="radio" id="definitely" name="participation" value="Definitely">
+            <label for="definitely">Definitely</label><br>
+            <input type="radio" id="probably" name="participation" value="Probably">
+            <label for="probably">Probably</label><br>
+            <input type="radio" id="probablyNot" name="participation" value="Probably not">
+            <label for="probablyNot">Probably not</label><br>
+            <input type="radio" id="definitelyNot" name="participation" value="Definitely not">
+            <label for="definitelyNot">Definitely not</label><br>
+            <input type="radio" id="unsure" name="participation" value="Unsure">
+            <label for="unsure">Unsure</label>
+
+     
+            <label for="wishes">What are your wishes and expectations, What do you want to say to the country on this national day?</label>
+            <textarea id="wishes" name="wishes"></textarea>
+
+          
+            <div class="buttons">
+                <button type="submit">Submit</button>
+                <button type="reset">clear</button>
+            </div>
+        </form>
+    </div>
+
+ 
+    <script src="------------------------"></script>
+    <script src="----------------------------"></script>
+
+    <script>
+       
+        const firebaseConfig = {
+            apiKey: "-------------------",
+            authDomain: "--------------------------",
+            databaseURL: "--------------------",
+            projectId: "------------------------",
+            storageBucket: "-----------------------",
+            messagingSenderId: "------------",
+            appId: "--------------------------------------------------------------------"
+        };
+
+   
+        const app = firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        document.querySelector('#surveyForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+
+  
+            const formData = new FormData(event.target);
+            const formObject = {};
+
+    
+            formData.forEach((value, key) => {
+                if (formObject[key]) {
+                    if (!Array.isArray(formObject[key])) {
+                        formObject[key] = [formObject[key]];
+                    }
+                    formObject[key].push(value);
+                } else {
+                    formObject[key] = value;
+                }
+            });
+
+            
+            const newSurveyRef = database.ref('surveys').push();
+            newSurveyRef.set(formObject)
+                .then(() => {
+                    console.log('Success:', formObject);
+                    alert('Survey submitted successfully!');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting the survey.');
+                });
+        });
+    </script>
+</body>
+</html>
